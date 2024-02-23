@@ -11,10 +11,11 @@ export default function Signup() {
     try {
       await fetch("https://83wp9k-3000.csb.app/signup", {
         method: "POST",
+        headers: { "Content-Type": "application/json"},
         body: JSON.stringify({ username, password }),
       });
       navigate("/login");
-      alert("Signup Successful");
+      
     } catch (error) {
       alert("something went wrong");
     }
