@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
@@ -9,15 +10,15 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      await fetch("https://83wp9k-3000.csb.app/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({ username, password }),
-      });
+      await axios({
+        url:"https://014398b2-1e27-4446-863c-1a39efaa1465-00-1keb4tassksfq.worf.replit.dev/signup",
+        method:"POST" , 
+        data:{ username, password }
+      })
       navigate("/login");
       
     } catch (error) {
-      alert("something went wrong");
+      alert("something went wrong" + error);
     }
   };
 
